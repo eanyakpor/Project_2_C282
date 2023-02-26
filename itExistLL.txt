@@ -1,0 +1,106 @@
+class Node {
+    int data;
+    Node prev;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+    }
+}
+
+class MyLinkedList {
+    Node head;
+    Node tail;
+
+    void add(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+            return;
+        }
+
+        tail.next = newNode;
+        newNode.prev = tail;
+        tail = newNode;
+    }
+
+    void insertAt(int data, int index) {
+        Node newNode = new Node(data);
+        Node current = head;
+        int i = 0;
+
+        while (current != null && i < index) {
+            current = current.next;
+            i++;
+        }
+
+        newNode.next = current;
+        newNode.prev = current.prev;
+        current.prev.next = newNode;
+        current.prev = newNode;
+    }
+
+    void deleteAt(int index) {
+        Node current = head;
+        int i = 0;
+
+        while (current != null && i < index) {
+            current = current.next;
+            i++;
+        }
+
+        current.prev.next = current.next;
+        current.next.prev = current.prev;
+    }
+
+    void Print() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " ");
+            current = current.next;
+        }
+    }
+
+    void PrintReverse() {
+        Node current = tail;
+        while (current != null) {
+            System.out.print(current.data + " ");
+            current = current.prev;
+        }
+    }
+    boolean CheckCircular()
+    {
+        Node slow = head;
+        Node fast = head.next;
+        while(fast != null)
+        {
+            if(slow == fast)
+            {
+                return true;
+            }
+
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+       return false;
+    }
+    boolean Exists(int val)
+    {
+        // loop through linked list
+        Node current = head;
+        while(current != null)
+        {
+            if (current.data == val)
+            {
+                return true;
+            }
+            current = current.next;
+        }
+
+
+        return false;
+    }
+
+}
