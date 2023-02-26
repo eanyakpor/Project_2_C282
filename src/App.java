@@ -17,18 +17,18 @@ public class App
             {
                 ((Game) card).Run();
             }
-            else if (card instanceof GameV2)
-            {
-                ((GameV2) card).Run();
-            }
-            else if (card instanceof GameV3)
-            {
-                ((GameV3) card).Run();
-            }
-            else if (card instanceof GameV4)
-            {
-                ((GameV4) card).Run();
-            }
+//            else if (card instanceof GameV2)
+//            {
+//                ((GameV2) card).Run();
+//            }
+//            else if (card instanceof GameV3)
+//            {
+//                ((GameV3) card).Run();
+//            }
+//            else if (card instanceof GameV4)
+//            {
+//                ((GameV4) card).Run();
+//            }
 
         }
     }
@@ -44,12 +44,7 @@ public class App
 
 
 
-    public static void printxy(int col, int row, String val)
-    {
-        char escCode = 0x1B;
-        System.out.print(String.format("%s[%d;%df",escCode,row,col));
-        System.out.print(val);
-    }
+
 
     public static void Box(int x, int y, int w, int h, int ascii, String fcolor,String bcolor)
     {
@@ -59,7 +54,7 @@ public class App
             for (int j=0; j< h; j++)
             {
 
-                printxy(x+i,y+j,fcolor + bcolor + val);
+                Game.printxy(x+i,y+j,fcolor + bcolor + val);
             }
         }
     }
@@ -73,7 +68,7 @@ public class App
         //
         // Run() will do everything
         LoadsCards();
-        System.out.println("Game Over");
+        //System.out.println("Game Over");
         //g.Run();
         //cls();
         //Symbols.PrintSymbols();
